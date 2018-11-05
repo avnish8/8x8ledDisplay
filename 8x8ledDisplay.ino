@@ -44,8 +44,11 @@ void setup() {
 void loop() {
   
   blink("hello");
+  delay(1000);
   typewriter("Namaste");
+  delay(1000);
   scroll("hola");
+  delay(10000);
 }
 
 void scroll(char* text) {

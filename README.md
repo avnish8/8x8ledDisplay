@@ -8,4 +8,4 @@ Speed of text can also be altered.
 Video - https://youtu.be/eEcv-jE7fuU
 
 # Support
-For any queries/support/feddback, feel free to contact - avnishiit@gmail.com
+For any queries/support/feedback, feel free to contact - avnishiit@gmail.com

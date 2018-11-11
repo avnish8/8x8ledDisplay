@@ -54,12 +54,13 @@ void scroll(char* text) {
 
   for (int index = 0; index < len; index++) {
     byte* screen = screenShot(findAlphabet(text[index]));
-    for (int frame = 0, shiftFrameLimit = speed * 8; frame < speed * 60; frame++) {
+    for (int frame = 0, shiftFrameLimit = speed * 8, frameCount = speed * 60; frame < frameCount; frame++) {
       if (frame % shiftFrameLimit == 0)
         shiftFrameBy1(screen, 'l');
 
       multiplex(screen);
     }
+    free(screen);
   }
 }
 
@@ -70,7 +71,8 @@ void typewriter(char* text) {
     byte* screen = screenShot(findAlphabet(text[index]));
 
     char direction = 'l';
-    for (int frame = 0, shiftFrameLimit = speed * 10; frame < speed * 60; frame++) {
+    for (int frame = 0, shiftFrameLimit = speed * 10, frameCount = speed * 60; frame < frameCount; frame++) {
+
       if (frame > speed * 40) {
         direction = 'r';
         shiftFrameLimit = speed+1;
@@ -89,7 +91,7 @@ void blink(char* text) {
   int len = length(text);
 
   for (int index = 0; index < len; index++) {
-    for (int frame = 0; frame < speed * 60; frame++) {
+    for (int frame = 0, frameCount = speed * 60; frame < frameCount; frame++) {
       multiplex(findAlphabet(text[index]));
     }
     delay(speed * 100);
@@ -115,7 +117,7 @@ void multiplex(byte* grid) {
 
 // Just initializing the pins as output
 void initialize() {
-  for(int i=0; i<8; i++) {
+  for(int i = 0; i < 8; i++) {
       pinMode(colPins[i],OUTPUT);
       pinMode(rowPins[i],OUTPUT);
     }
